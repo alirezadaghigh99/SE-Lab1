@@ -32,3 +32,13 @@ def game_state(mat):
     return 'Lose'
 
 
+def add_random_element(mat):
+    r = random.randint(0, 3)
+    c = random.randint(0, 3)
+
+    while mat[r][c] != 0:
+        r = random.randint(0, 3)
+        c = random.randint(0, 3)
+
+    mat[r][c] = 2
+
