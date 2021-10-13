@@ -4,7 +4,6 @@ dimension = 4
 goal_score = 2048
 
 
-
 def game_state(mat):
     for i in range(dimension):
         for j in range(dimension):
@@ -36,18 +35,17 @@ def game_state(mat):
 def compress(mat):
     changed = False
     new_mat = []
-    for i in range(4):
-        new_mat.append([0]*4)
-    for i in range(4):
+    for i in range(dimension):
+        new_mat.append([0] * dimension)
+    for i in range(dimension):
         pos = 0
-        for j in range(4):
+        for j in range(dimension):
             if new_mat[i][j] != mat[i][j]:
                 new_mat[i][pos] = mat[i][j]
                 if j != pos:
                     changed = True
                     pos += 1
     return new_mat, changed
-
 
 
 def add_random_element(mat):
@@ -60,3 +58,14 @@ def add_random_element(mat):
 
     mat[r][c] = 2
 
+
+def merge(mat):
+    # this function handles left movement. other moves can be done vis matrix transformations.
+    changed = False
+    for i in range(dimension):
+        for j in range(dimension - 1):
+            if mat[i][j] == mat[i][j + 1] and mat[i][j] != 0:
+                mat[i][j] = mat[i][j] * 2
+                mat[i][j + 1] = 0
+                changed = True
+    return mat, changed
