@@ -16,8 +16,6 @@ def start_game():
     print("'a' : Move Left")
     print("'d' : Move Right")
 
-    # calling the function to add
-    # a new 2 in grid after every step
     add_random_element(mat)
     return mat
 
