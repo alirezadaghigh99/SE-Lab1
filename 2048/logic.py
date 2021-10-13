@@ -4,6 +4,23 @@ dimension = 4
 goal_score = 2048
 
 
+def start_game():
+    mat = []
+    for i in range(dimension):
+        mat.append([0] * dimension)
+
+    # printing controls for user
+    print("enter one of these commands : ")
+    print("'w' : Move Up")
+    print("'s' : Move Down")
+    print("'a' : Move Left")
+    print("'d' : Move Right")
+
+    # calling the function to add
+    # a new 2 in grid after every step
+    add_random_element(mat)
+    return mat
+
 
 def game_state(mat):
     for i in range(dimension):
@@ -37,7 +54,7 @@ def compress(mat):
     changed = False
     new_mat = []
     for i in range(4):
-        new_mat.append([0]*4)
+        new_mat.append([0] * 4)
     for i in range(4):
         pos = 0
         for j in range(4):
@@ -49,7 +66,6 @@ def compress(mat):
     return new_mat, changed
 
 
-
 def add_random_element(mat):
     r = random.randint(0, 3)
     c = random.randint(0, 3)
@@ -59,4 +75,3 @@ def add_random_element(mat):
         c = random.randint(0, 3)
 
     mat[r][c] = 2
-
