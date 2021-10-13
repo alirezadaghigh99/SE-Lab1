@@ -5,9 +5,7 @@ goal_score = 2048
 
 
 def start_game():
-    mat = []
-    for i in range(dimension):
-        mat.append([0] * dimension)
+    mat = [[0 for _ in range(dimension)] for _ in range(dimension)]
 
     # printing controls for user
     print("enter one of these commands : ")
@@ -49,7 +47,6 @@ def game_state(mat):
 
 
 def compress(mat):
-    changed = False
     new_mat = []
     for i in range(dimension):
         new_mat.append([0] * dimension)
@@ -59,10 +56,8 @@ def compress(mat):
             if new_mat[i][j] != mat[i][j]:
                 new_mat[i][pos] = mat[i][j]
                 if j != pos:
-                    changed = True
                     pos += 1
-    return new_mat, changed
-
+    return new_mat
 
 
 def add_random_element(mat):
@@ -78,11 +73,55 @@ def add_random_element(mat):
 
 def merge(mat):
     # this function handles left movement. other moves can be done vis matrix transformations.
-    changed = False
     for i in range(dimension):
         for j in range(dimension - 1):
             if mat[i][j] == mat[i][j + 1] and mat[i][j] != 0:
                 mat[i][j] = mat[i][j] * 2
                 mat[i][j + 1] = 0
-                changed = True
-    return mat, changed
+    return mat
+
+
+def reverse_cols(mat):
+    new_mat = []
+    for i in range(dimension):
+        new_mat += [[]]
+        for j in range(dimension):
+            new_mat[i].append(mat[i][dimension - j - 1])
+    return new_mat
+
+
+def transpose(mat):
+    new_mat = []
+    for i in range(dimension):
+        new_mat.append += [[]]
+        for j in range(dimension):
+            new_mat[i].append(mat[j][i])
+    return new_mat
+
+
+def move_left(mat):
+    new_mat = compress(mat)
+    new_mat = merge(new_mat)
+    new_mat = compress(new_mat)
+    return new_mat
+
+
+def move_right(mat):
+    new_mat = reverse_cols(mat)
+    new_mat = move_left(new_mat)
+    new_mat = reverse_cols(new_mat)
+    return new_mat
+
+
+def move_up(mat):
+    new_mat = transpose(mat)
+    new_mat = move_left(new_mat)
+    new_mat = transpose(new_mat)
+    return new_mat
+
+
+def move_down(mat):
+    new_mat = transpose(mat)
+    new_mat = move_right(new_mat)
+    new_mat = transpose(new_mat)
+    return new_mat
