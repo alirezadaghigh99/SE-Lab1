@@ -4,6 +4,7 @@ dimension = 4
 goal_score = 2048
 
 
+
 def game_state(mat):
     for i in range(dimension):
         for j in range(dimension):
@@ -30,5 +31,22 @@ def game_state(mat):
 
     # else we have lost the game
     return 'Lose'
+
+
+def compress(mat):
+    changed = False
+    new_mat = []
+    for i in range(4):
+        new_mat.append([0]*4)
+    for i in range(4):
+        pos = 0
+        for j in range(4):
+            if new_mat[i][j] != mat[i][j]:
+                new_mat[i][pos] = mat[i][j]
+                if j != pos:
+                    changed = True
+                    pos += 1
+    return new_mat, changed
+
 
 
