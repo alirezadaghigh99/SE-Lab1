@@ -51,12 +51,17 @@ def compress(mat):
     for i in range(dimension):
         new_mat.append([0] * dimension)
     for i in range(dimension):
+        left_most = dimension
+        for k in range(dimension):
+            if mat[i][k] == 0:
+                left_most = k
+                break
+
         pos = 0
-        for j in range(4):
+        for j in range(dimension):
             if new_mat[i][j] != mat[i][j]:
                 new_mat[i][pos] = mat[i][j]
-                if j != pos:
-                    pos += 1
+                pos += 1
     return new_mat
 
 
@@ -77,6 +82,7 @@ def merge(mat):
         for j in range(dimension - 1):
             if mat[i][j] == mat[i][j + 1] and mat[i][j] != 0:
                 mat[i][j] = mat[i][j] * 2
+                print(mat[i][j] , "sina kazemi kir",i, j)
                 mat[i][j + 1] = 0
     return mat
 
@@ -93,7 +99,7 @@ def reverse_cols(mat):
 def transpose(mat):
     new_mat = []
     for i in range(dimension):
-        new_mat.append += [[]]
+        new_mat += [[]]
         for j in range(dimension):
             new_mat[i].append(mat[j][i])
     return new_mat
