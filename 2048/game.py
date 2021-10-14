@@ -16,6 +16,7 @@ def runner():
         if cmd == 'w':
             mat = logic.move_up(mat)
             status = logic.game_state(mat)
+            print("score : ", logic.score)
             if status == 'Continue':
                 print(status)
                 logic.add_random_element(mat)
@@ -25,6 +26,7 @@ def runner():
         elif cmd == 's':
             mat = logic.move_down(mat)
             status = logic.game_state(mat)
+            print("score : ", logic.score)
             if status == 'Continue':
                 print(status)
                 logic.add_random_element(mat)
@@ -34,6 +36,7 @@ def runner():
         elif cmd == 'a':
             mat = logic.move_left(mat)
             status = logic.game_state(mat)
+            print("score : ", logic.score)
             if status == 'Continue':
                 logic.add_random_element(mat)
             else:
@@ -43,6 +46,7 @@ def runner():
         elif cmd == 'd':
             mat = logic.move_right(mat)
             status = logic.game_state(mat)
+            print("score : ", logic.score)
             if status == 'Continue':
                 logic.add_random_element(mat)
             else:
