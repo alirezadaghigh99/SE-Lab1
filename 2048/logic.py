@@ -2,6 +2,7 @@ import random
 
 dimension = 4
 goal_score = 2048
+score = 0
 
 
 def start_game():
@@ -78,11 +79,12 @@ def add_random_element(mat):
 
 def merge(mat):
     # this function handles left movement. other moves can be done vis matrix transformations.
+    global score
     for i in range(dimension):
         for j in range(dimension - 1):
             if mat[i][j] == mat[i][j + 1] and mat[i][j] != 0:
                 mat[i][j] = mat[i][j] * 2
-                print(mat[i][j] , "sina kazemi kir",i, j)
+                score += mat[i][j]
                 mat[i][j + 1] = 0
     return mat
 
