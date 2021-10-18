@@ -25,6 +25,10 @@ def save_user(user, new_user=True):
     pickle.dump(users, open(PIK, "wb"))
 
 
+def initial_save():
+    data = []
+    pickle.dump(data, open(PIK, "wb"))
+
 def print_mat(mat):
     for i in range(logic.dimension):
         for j in range(logic.dimension):
@@ -34,7 +38,7 @@ def print_mat(mat):
 
 def runner():
     new_user = False
-    name = input("pls enter your name: ")
+    name = input("please enter your name: ")
     user = load_users(name)
     if user is None:
         user = User.User(name)
@@ -55,12 +59,9 @@ def runner():
                 if user.best_score < logic.score:
                     user.best_score = logic.score
                 save_user(user, new_user)
-                print_mat(mat)
                 print(status)
-                print("your best score is :", user.best_score)
                 break
-        elif cmd == "q":
-            return
+
         elif cmd == 's':
             mat = logic.move_down(mat)
             status = logic.game_state(mat)
@@ -72,9 +73,8 @@ def runner():
                 if user.best_score < logic.score:
                     user.best_score = logic.score
                 save_user(user, new_user)
-                print_mat(mat)
                 print(status)
-                print("your best score is :", user.best_score)
+
                 break
 
         elif cmd == 'a':
@@ -89,9 +89,7 @@ def runner():
                 if user.best_score < logic.score:
                     user.best_score = logic.score
                 save_user(user, new_user)
-                print_mat(mat)
                 print(status)
-                print("your best score is :", user.best_score)
                 break
 
         elif cmd == 'd':
@@ -103,12 +101,10 @@ def runner():
             if status == 'Continue':
                 logic.add_random_element(mat)
             else:
+                print(status)
                 if user.best_score < logic.score:
                     user.best_score = logic.score
                 save_user(user, new_user)
-                print_mat(mat)
-                print(status)
-                print("your best score is :", user.best_score)
                 break
         else:
             print("Invalid Key Pressed")
