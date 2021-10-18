@@ -35,6 +35,11 @@ def print_mat(mat):
             print(mat[i][j], end='\t')
         print()
 
+def print_end_game(status):
+    if status:
+        print('HOOOORAY!!!! YOU WIN')
+        return
+    print('OH! YOU LOSE; lucky next time')
 
 def runner():
     new_user = False
@@ -59,7 +64,10 @@ def runner():
                 if user.best_score < logic.score:
                     user.best_score = logic.score
                 save_user(user, new_user)
-                print(status)
+                if status == "Win":
+                    print_end_game(True)
+                else:
+                    print_end_game(False)
                 break
 
         elif cmd == 's':
@@ -73,7 +81,10 @@ def runner():
                 if user.best_score < logic.score:
                     user.best_score = logic.score
                 save_user(user, new_user)
-                print(status)
+                if status == "Win":
+                    print_end_game(True)
+                else:
+                    print_end_game(False)
 
                 break
 
@@ -89,7 +100,10 @@ def runner():
                 if user.best_score < logic.score:
                     user.best_score = logic.score
                 save_user(user, new_user)
-                print(status)
+                if status == "Win":
+                    print_end_game(True)
+                else:
+                    print_end_game(False)
                 break
 
         elif cmd == 'd':
@@ -101,10 +115,13 @@ def runner():
             if status == 'Continue':
                 logic.add_random_element(mat)
             else:
-                print(status)
                 if user.best_score < logic.score:
                     user.best_score = logic.score
                 save_user(user, new_user)
+                if status == "Win":
+                    print_end_game(True)
+                else:
+                    print_end_game(False)
                 break
         else:
             print("Invalid Key Pressed")
