@@ -64,10 +64,7 @@ def runner():
                 if user.best_score < logic.score:
                     user.best_score = logic.score
                 save_user(user, new_user)
-                if status == "Win":
-                    print_end_game(True)
-                else:
-                    print_end_game(False)
+                print(status)
                 break
 
         elif cmd == 's':
@@ -81,10 +78,7 @@ def runner():
                 if user.best_score < logic.score:
                     user.best_score = logic.score
                 save_user(user, new_user)
-                if status == "Win":
-                    print_end_game(True)
-                else:
-                    print_end_game(False)
+                print(status)
 
                 break
 
@@ -100,10 +94,7 @@ def runner():
                 if user.best_score < logic.score:
                     user.best_score = logic.score
                 save_user(user, new_user)
-                if status == "Win":
-                    print_end_game(True)
-                else:
-                    print_end_game(False)
+                print(status)
                 break
 
         elif cmd == 'd':
@@ -115,13 +106,10 @@ def runner():
             if status == 'Continue':
                 logic.add_random_element(mat)
             else:
+                print(status)
                 if user.best_score < logic.score:
                     user.best_score = logic.score
                 save_user(user, new_user)
-                if status == "Win":
-                    print_end_game(True)
-                else:
-                    print_end_game(False)
                 break
         else:
             print("Invalid Key Pressed")
