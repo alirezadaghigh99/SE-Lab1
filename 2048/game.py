@@ -34,7 +34,7 @@ def print_mat(mat):
 
 def runner():
     new_user = False
-    name = input("enter your name: ")
+    name = input("pls enter your name: ")
     user = load_users(name)
     if user is None:
         user = User.User(name)
