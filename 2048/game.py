@@ -4,7 +4,8 @@ import pickle
 
 PIK = "users.pickle"
 
-
+def print_end_game(status):
+    pass
 def load_users(username):
     with open(PIK, "rb") as f:
         users = pickle.load(f)
