@@ -21,7 +21,8 @@ def runner():
                 logic.add_random_element(mat)
             else:
                 break
-
+        elif cmd == "q":
+            return
         elif cmd == 's':
             mat = logic.move_down(mat)
             status = logic.game_state(mat)
