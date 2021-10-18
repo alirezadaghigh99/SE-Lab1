@@ -25,11 +25,6 @@ def save_user(user, new_user=True):
     pickle.dump(users, open(PIK, "wb"))
 
 
-def initial_save():
-    data = []
-    pickle.dump(data, open(PIK, "wb"))
-
-
 def print_mat(mat):
     for i in range(logic.dimension):
         for j in range(logic.dimension):
