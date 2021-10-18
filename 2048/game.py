@@ -64,7 +64,8 @@ def runner():
                 print(status)
                 print("your best score is :", user.best_score)
                 break
-
+        elif cmd == "q":
+            return
         elif cmd == 's':
             mat = logic.move_down(mat)
             status = logic.game_state(mat)

@@ -14,6 +14,7 @@ def start_game():
     print("'s' : Move Down")
     print("'a' : Move Left")
     print("'d' : Move Right")
+    print("'q' : for quit game")
 
     add_random_element(mat)
     return mat
