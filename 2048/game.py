@@ -5,7 +5,11 @@ import pickle
 PIK = "users.pickle"
 
 def print_end_game(status):
-    pass
+    if status:
+        print('HOOOORAY!!!! YOU WIN')
+        return
+    print('OH! YOU LOSE; lucky next time')
+
 def load_users(username):
     with open(PIK, "rb") as f:
         users = pickle.load(f)
@@ -36,11 +40,6 @@ def print_mat(mat):
             print(mat[i][j], end='\t')
         print()
 
-def print_end_game(status):
-    if status:
-        print('HOOOORAY!!!! YOU WIN')
-        return
-    print('OH! YOU LOSE; lucky next time')
 
 def runner():
     new_user = False
